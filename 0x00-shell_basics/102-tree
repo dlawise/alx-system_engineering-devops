@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir welocme/to/school
+mkdir -p welocme/to/school
