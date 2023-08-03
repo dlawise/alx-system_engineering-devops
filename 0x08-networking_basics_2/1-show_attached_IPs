@@ -1,0 +1,17 @@
+#!/bin/bash
+# A Bash script that displays all active IPv4 IPs on the machine it’s executed on
+
+# Get all network interfaces on the system
+interfaces=$(ip -o link show | awk '{print $2}' | cut -d':' -f1)
+
+# Loop through each interface and retrieve the active IPv4 IPs
+for interface in $interfaces; do
+  	# Get the IP address for the interface
+	ip_address=$(ip -o -4 addr show $interface | awk '{print $4}' | cut -d'/' -f1)
+
+  	# Check if the IP address is not empty (active interface)
+	if [ ! -z "$ip_address" ]; then
+    	echo "$ip_address"
+  	fi
+done
+
