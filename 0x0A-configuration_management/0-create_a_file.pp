@@ -1,7 +1,16 @@
+#Ensure directory /tmp/school exists
 file { '/tmp/school':
-  ensure  => 'file',           #Ensure it is regular file
-  mode    => '0744',           #Set file permission
-  owner   => 'www-data',       #Set file owner
-  group   => 'www-data',       #Set file group
-  content => 'I love Puppet',  #Set file content
+  ensure => directory,
+  owner  => 'www-data',
+  group  => 'www-data',
+  mode   => '0744',
+}
+
+#Create file /tmp/school with content "I love Puppet"
+file { '/tmp/school/school':
+  ensure  => file,
+  owner   => 'www-data',
+  group   => 'www-data',
+  mode    => '0744',
+  content => 'I love Puppet',
 }
